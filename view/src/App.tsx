@@ -1,6 +1,7 @@
 import React from 'react';
+import './test.css';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <div>
       <div>시작</div>
