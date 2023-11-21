@@ -1,45 +1,30 @@
 package com.dbTest.app;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class PostgreSQLConnection {
+@SpringBootApplication
+public class QueryExecutor {
     private static Connection connection = null;
 
     public static void main(String[] args) {
-        try {
-            // JDBC 드라이버 로드
-            Class.forName("org.postgresql.Driver");
+        SpringApplication.run(QueryExecutor.class, args);
+        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String username = "postgres";
+        String password = "123123";
 
-            // 데이터베이스 연결
-            String url = "jdbc:postgresql://localhost:5432/postgres";
-            String username = "postgres";
-            String password = "123123";
-            connection = DriverManager.getConnection(url, username, password);
+        connection = DBConnector.getConnection(url, username, password);
 
-            // 연결 성공 시 테이블 생성 및 데이터 삽입
-            if (connection != null) {
-                createTable();
-                insertData();
-            }
-
-            System.out.println("데이터베이스 연결 성공!");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // 연결 종료
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+        if (connection != null) {
+            createTable();
+            insertData();
         }
+
+        DBConnector.closeConnection();
     }
 
     private static void createTable() {

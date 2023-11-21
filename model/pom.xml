@@ -68,7 +68,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             <configuration>
-                <mainClass>com.dbTest.app.PostgreSQLConnection</mainClass>
+                <mainClass>com.dbTest.app.QueryExecutor</mainClass>
             </configuration>
         </plugin>
     </plugins>

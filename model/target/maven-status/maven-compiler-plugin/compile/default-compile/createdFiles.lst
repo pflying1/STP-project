@@ -1,2 +1,3 @@
+com\dbTest\app\QueryExecutor.class
 com\dbTest\app\DemoApplicationTests.class
-com\dbTest\app\PostgreSQLConnection.class
+com\dbTest\app\DBConnector.class
