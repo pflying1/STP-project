@@ -1,3 +1,4 @@
 com\dbTest\app\QueryExecutor.class
-com\dbTest\app\DemoApplicationTests.class
+com\dbTest\app\User.class
+com\dbTest\app\UserController.class
 com\dbTest\app\DBConnector.class
